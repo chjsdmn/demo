@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drop-down lists</title>
+</head>
+<body>
+    Velg betalingsmåter: <br>
+    <!--下拉菜单，利用id来获取选项的值-->
+    <select id="betaling" onchange="visMaate()">
+        <option>kontant</option>
+        <option>kort</option>
+        <option>vipps</option>
+    </select>
+    <div id="res"></div>
+    <script>
+        function visMaate(){
+            let ut = "Du har valgt ";
+            //.value取得所选项，NOTICE：不需要在option里设置value，.value可以自动获取option的文本作为value！！！
+            ut += document.getElementById("betaling").value;
+            document.getElementById("res").innerText = ut + ".";
+        }
+    </script>
+</body>
+</html>

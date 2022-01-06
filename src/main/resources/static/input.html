@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Input</title>
+</head>
+<body>
+    Tall 1 : <input type="text" id="tall1"><br>
+    Tall 2 : <input type="text" id="tall2"><br>
+    <button onclick="sum()">Sum</button>
+    <div id="sum"></div>
+    <script>
+        function sum(){
+            //.value获取input里输入的值
+            const innTall1 = document.getElementById("tall1").value;
+            const innTall2 = document.getElementById("tall2").value;
+            //Number(string) 字符串转换成数字类型
+            const tall1 = Number(innTall1);
+            const tall2 = Number(innTall2);
+            //isNaN(number) 检查是否为数字类型，是返回true，否返回false
+            if(isNaN(tall1) || isNaN(tall2)){
+                //.innerHTML= "里面的内容被视为HTML"
+                document.getElementById("sum").innerHTML = "<b>Det er ikke tall.</b>";
+            }
+            else {
+                const summen = tall1 + tall2;
+                //.innerText= "里面的内容被视为纯文本"
+                document.getElementById("sum").innerText = "Summer er " + summen;
+            }
+        }
+
+    </script>
+
+</body>
+</html>

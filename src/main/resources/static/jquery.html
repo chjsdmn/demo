@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--在head里面，要有下面这条链接！！！-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <title>JQuery</title>
+</head>
+<body>
+    <div id="greet">
+        <b>Hello world</b>
+    </div>
+    <div id="ut"></div>
+    <div id="ut2"></div>
+    Skriv navnet ditt: <br>
+    <input type="text" id="miss"><br>
+    <input type="text" id="navn" onchange="visNavn()"><br>
+    <div id="res"></div>
+
+    Ris <input type="radio" name="frokost" value="ris" onchange="visValg()"><br>
+    Brød <input type="radio" name="frokost" value="brød" onchange="visValg()"><br>
+    <div id="res2"></div> <br>
+    <!--JQuery的function，比如onclick、onchange不需要写在html里面，详情如下-->
+    <button id="knapp">Click</button>
+    <div id="melding"></div>
+
+    <script>
+        /*JQuery 总是以$开头，可以看作是一个可以带入变量的function
+           1. # + id => $("#id") 取得这个id的元素
+           2. [name = '...'] => $("[name = '...']") 取得这个name的元素
+           3. function(){...} => $(function(){...})，叫做ready-funksjon，在所有页面都下载完成后再执行函数
+          .val()看作是一个方法，取得f.eks input中的值
+          .val("...") 设定f.eks input中的值
+          .html() 取得某个元素里的html
+          .html("<p>Per</p>") 设定某个元素里的html
+          .text() 取得某个元素里的text
+          .text("...") 设定某个元素里的text
+        */
+        let greet = $("#greet").html();
+        $("#ut").html(greet);
+        $("#ut2").text(greet);
+        let title = $("#miss").val("Miss");
+        function visNavn(){
+            //$("#id").val() => document.getElementById("id").value
+            let navnet = $("#navn").val();
+            //$("#id").text(...) => document.getElementById("id").innerText
+            $("#res").text("Hello " + title.val() + " " + navnet + "!");
+        }
+        function visValg(){
+            let utArray = $("[name = 'frokost']");
+            for(let i of utArray){
+                if(i.checked){
+                    $("#res2").text("Du har valgt frokost: " + i.value + ".");
+                }
+            }
+        }
+        //onclick事件不用写在HTML中，直接在这里用.click(reday-function(){...})来完成
+        $("#knapp").click(function (){
+            $("#melding").html("<b>Bra jobba!</b>")
+        });
+    </script>
+</body>
+</html>

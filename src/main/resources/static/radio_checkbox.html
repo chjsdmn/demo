@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Radio & Check box</title>
+</head>
+<body>
+    Velge type: <br>
+    <!-- name相同，表示radio/checkbox是一个"family"的，
+        radio只能选其一，即单选
+        checkbox可以多选
+    -->
+    Ris <input type="radio" name="frokost" value="ris" onchange="visValg()"><br>
+    Brød <input type="radio" name="frokost" value="brød" onchange="visValg()"><br>
+    <div id="res"></div> <br>
+    Velge pålegg: <br>
+    Reker <input type="checkbox" name="paalegg" value="reker" onchange="visPaalegg()"><br>
+    Egg <input type="checkbox" name="paalegg" value="egg" onchange="visPaalegg()"><br>
+    Ost <input type="checkbox" name="paalegg" value="ost" onchange="visPaalegg()"><br>
+    <div id="res2"></div>
+    <script>
+        function visValg() {
+            let ut = "Du har valgt forkost: ";
+            //document.getElementsByName()返回的是一个array!!
+            let frokostArray = document.getElementsByName("frokost");
+            //for(let array中的每一个值 of ...)
+            for (let frokost of frokostArray) {
+                //.checked表示被选中的，返回Boolean
+                if (frokost.checked) {
+                    //.value是input中已经设定的value的值
+                    ut += frokost.value + ".";
+                }
+            }
+            document.getElementById("res").innerText = ut;
+        }
+        function visPaalegg(){
+            let ut = "Du har valgt pålegg: ";
+            let paaleggArray = document.getElementsByName("paalegg");
+            for(let paalegg of paaleggArray){
+                if(paalegg.checked){
+                    ut += paalegg.value + " ";
+                }
+            }
+            document.getElementById("res2").innerText = ut;
+        }
+    </script>
+</body>
+</html>
